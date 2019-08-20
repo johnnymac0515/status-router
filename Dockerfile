@@ -1,4 +1,11 @@
-FROM jenkins/jenkins:lts
+FROM python:3.6.8-slim
 
-RUN apt-get update
-RUN apt-get install git
+WORKDIR /app
+
+ARG USR
+
+USER $USR
+
+COPY hello_world.py /app/hello_world.py
+
+CMD python /app/hello_world.py
